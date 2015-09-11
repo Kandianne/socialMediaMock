@@ -1,0 +1,23 @@
+<div class="well container">
+	<h1 style="text-align: center;">{{vm.topic.hashtopic}}</h1>
+	<p>{{vm.topic.summary}}</p>
+	
+</div>
+<br>
+<div>
+	<ul>
+		<li ng-repeat="comment in vm.topic.comments track by $index">
+			{{comment.user.username}} : {{comment.body}}
+		</li>
+	</ul>
+</div>
+<div class="well container" ng-if="nav.status.id">
+	<div style="text-align:center;">
+		<button class="btn btn-lg btn-primary" ng-show="!addComment" ng-click="addComment = true;">Add Comment</button>
+		<div class="form-inline" ng-show="addComment">
+			<input class="form-control" ng-model="vm.newComment" placeholder="Comment...">
+			<button class="btn btn-success" ng-click="addComment = false; vm.createComment();">Submit</button>
+			<button class="btn btn-danger" ng-click="addComment = false;">Cancel</button>
+		</div>
+	</div>
+</div>

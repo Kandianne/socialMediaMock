@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<title>#hashItOut</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap_theme.css">
+	<link rel="stylesheet" type="text/css" href="/css/site.css">
+</head>
+<body>
+	<div id="navigation" class="well" ng-controller="navBarController as nav">
+		
+		
+		<div class="nav navbar-nav navbar-left">
+			<a ui-sref="Home"><span class="glyphicon glyphicon-home"></span></a>
+			<a ui-sref="CreateTopic"><span class="glyphicon glyphicon-pencil"></span> Create Topic</a>
+		</div>
+
+		<div class="nav navbar-nav navbar-right">
+			<a ui-sref="RegisterUser"><span class="glyphicon glyphicon-user"></span> Register</a>
+			<a ui-sref="LoginUser"><span class="glyphicon glyphicon-lock"></span> Login</a>
+		</div>
+
+		<div id="mainTitle">
+			<a  ui-sref="Home">#</a>
+		</div>
+
+		<ui-view></ui-view>
+	</div>
+	
+	<!-- Ext Libs -->
+	<script src="angular/angular.min.js"></script>
+	<script src="angular-ui-router/release/angular-ui-router.min.js"></script>
+	<!-- Global Src -->
+	<script src="/javascript/app.js"></script>
+	<!-- Factories -->
+	<script src="/javascript/services/HomeFactory.js"></script>
+	<script src="/javascript/services/UserFactory.js"></script>
+	<!-- Controllers -->
+	<script src="/javascript/controllers/HomeController.js"></script>
+	<script src="/javascript/controllers/navBarController.js"></script>
+	<script src="/javascript/controllers/createTopicController.js"></script>
+	<script src="/javascript/controllers/TopicDetailsController.js"></script>
+</body>
+</html>

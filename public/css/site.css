@@ -1,0 +1,48 @@
+body, #userTopics, .well {
+	background-color: white;
+	font-style: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	color: #319C38;
+}
+
+
+a {
+	color: #777;
+	margin: auto 3px;
+}
+
+a:hover, a:visited, a:active {
+	text-decoration: none;
+}
+
+#navigation {
+	padding: auto;
+	color: #777;
+	background-color: #e3efc9;
+	border-bottom: thin solid #319C38;
+	height: 60px;
+}
+#mainTitle {
+	margin-top: -17px;
+	text-align: center;
+	color: #319C38;
+	font-size: 3em;
+	font-weight: bold;
+}
+
+#createTopic {
+	margin: 6px auto;
+	text-align: center;
+	width: 600px;
+}
+
+#userTopics {
+	width: 600px;
+	margin: 30px auto;
+	border: thick solid #e3efc9;
+}
+
+.searchBoxes {
+	height: 90px;
+	margin: 90px;
+	text-align: center;
+}

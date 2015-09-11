@@ -1,0 +1,21 @@
+
+<div class="nav navbar-nav navbar-left"><input class="searchBoxes" type="text" ng-model="search.hashtopic" placeholder="Search Topics..."/></div>
+
+<div class="nav navbar-nav navbar-right"><input class="searchBoxes"  type="text" ng-model="search.summary" placeholder="Search Summaries..."/></div>
+
+<div ng-repeat="t in vm.topics | filter:search">
+
+
+	<div id="userTopics" class="well">
+		<h2>{{t.hashtopic}}</h2>
+		<p>{{t.summary}}</p>
+
+		<a ui-sref="TopicDetail({id: topic._id})">See More</a>
+
+	</div>
+
+
+</div>
+
+
+
