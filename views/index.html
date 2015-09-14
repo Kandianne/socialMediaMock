@@ -16,7 +16,12 @@
 			<a ui-sref="CreateTopic"><span class="glyphicon glyphicon-pencil"></span> Create Topic</a>
 		</div>
 
-		<div class="nav navbar-nav navbar-right">
+		<div class="nav navbar-nav navbar-right" ng-show="nav.status.id">
+			<a ng-click="nav.logout()">Logout</a>
+			<a ui-sref="UserProfile({id: topic._id})">{{nav.status.username}}</a>
+		</div>
+
+		<div class="nav navbar-nav navbar-right" ng-show="!nav.status.id">
 			<a ui-sref="RegisterUser"><span class="glyphicon glyphicon-user"></span> Register</a>
 			<a ui-sref="LoginUser"><span class="glyphicon glyphicon-lock"></span> Login</a>
 		</div>
@@ -41,5 +46,6 @@
 	<script src="/javascript/controllers/navBarController.js"></script>
 	<script src="/javascript/controllers/createTopicController.js"></script>
 	<script src="/javascript/controllers/TopicDetailsController.js"></script>
+	<script src="/javascript/controllers/UserProfileController.js"></script>
 </body>
 </html>

@@ -6,12 +6,12 @@ var port = process.env.PORT || 3000;
 var mongoose = require('mongoose');
 var passport = require('passport');
 //-------------------------------------------------------------------------------
-//REQUIRING MODELS HERE
-var topicModel = require("./models/topicModel");
-var userModel = require('./models/User');
-
+//REQUIRING MODELS & PASSPORT HERE
+require("./models/topicModel");
+require("./models/TopicComment");
+require('./models/User');
+require('./config/passport');
 //-------------------------------------------------------------------------------
-
 //connection
 mongoose.connect('mongodb://localhost/topics-app');
 //--------------------------------------------------------------------------------
@@ -35,6 +35,7 @@ app.use(bodyParser.json());
 //DEFINE/REQUIRE ROUTES BEFORE SETTING UP PATHS---------------------------------------------------
 var topicRoutes = require("./routes/topicRoutes")
 var userRoutes = require('./routes/UserRoutes');
+var commentRoutes = require("./routes/CommentRoutes");
 
 //on homepage load, render the index page
 app.get('/', function(req, res) {
@@ -44,6 +45,7 @@ app.get('/', function(req, res) {
 //SETTING UP THE PATHS--------------------------------------------------------------------
 app.use("/api/topics", topicRoutes);
 app.use('/api/users', userRoutes);
+app.use("/api/comments", commentRoutes);
 //----------------------------------------------------------------------------------------
 
 var server = app.listen(port, function() {

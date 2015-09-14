@@ -13,9 +13,10 @@
 
 		vm.createTopic = function(){
 			HomeFactory.createTopic(vm.topic).then(function(){
-				console.log("controller hitting");
 				$state.go("Home");
 			});
 		};
+
+		
 	}
 })();

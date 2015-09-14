@@ -25,6 +25,11 @@
 			templateUrl: 'views/topicDetail.html',
 			controller: 'TopicDetailsController',
 			controllerAs: 'vm'
+		}).state('UserProfile', {
+			url: '/User/:id',
+			templateUrl: 'views/UserProfile.html',
+			controller: 'UserProfileController',
+			controllerAs: 'vm'
 		});
 		$urlRouterProvider.otherwise('/');
 	}

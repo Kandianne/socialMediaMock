@@ -10,7 +10,13 @@ a {
 	margin: auto 3px;
 }
 
-a:hover, a:visited, a:active {
+a:active, a:visited, a:active {
+	text-decoration: none;
+	color: #319C38;
+}
+
+a:hover {
+	font-weight: bold;
 	text-decoration: none;
 }
 
@@ -39,6 +45,9 @@ a:hover, a:visited, a:active {
 	width: 600px;
 	margin: 30px auto;
 	border: thick solid #e3efc9;
+}
+#posts {
+	color: #319C38;
 }
 
 .searchBoxes {

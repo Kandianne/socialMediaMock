@@ -17,9 +17,13 @@
 				};
 				HomeFactory.createComment(comment).then(function(res) {
 					vm.newComment = '';
-					console.log(res);
 					vm.topic.comments.push(res);
 				})
-			}
+			};
+
+			vm.deleteComment = function(comment) {
+				vm.topic.comments.splice(vm.topic.comments.indexOf(comment),1);
+				HomeFactory.deleteComment(comment)
+			};
 		}
 	})();

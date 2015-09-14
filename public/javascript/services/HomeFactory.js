@@ -28,11 +28,51 @@
 			var q = $q.defer();
 			$http.get("/api/topics/" + id).success(function(res){
 				q.resolve(res);
-				console.log(res);
 			});
 			return q.promise;
 		};
 
-		return o;
-	}
-})();
+		function getAuth() {
+			var auth = {
+				headers: {
+					Authorization: "Bearer " + localStorage.getItem("token")
+				}
+			}
+			return auth;
+		}
+
+		//---------------------LIKES----------------------------------------------------
+		o.likeClick = function(userName) {
+			var q = $q.defer();
+			$http.post("/api/topics/likes", userName).success(function(res){
+				q.resolve(res);
+			});
+			return q.promise;
+		};
+ 		//--------------------------------------------------------------------------------
+ 		o.createComment = function(comment) {
+ 			var q = $q.defer();
+ 			$http.post("/api/comments", comment, getAuth()).success(function(res){
+ 				q.resolve(res);
+ 			})
+ 			return q.promise;
+ 		}
+
+ 		o.deleteComment = function(comment) {
+ 			$http.delete("/api/comments/" + comment._id).success(function(res){
+ 				q.resolve(res);
+ 			})
+ 			return q.promise;
+ 		}
+
+ 		o.deleteTopic = function(topic) {
+ 			var q = $q.defer();
+ 			$http.delete("/api/topics/" + topic._id).success(function(res){
+ 				q.resolve(res);
+ 			})
+ 			return q.promise;
+ 		}
+
+ 		return o;
+ 	}
+ })();

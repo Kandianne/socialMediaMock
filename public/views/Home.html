@@ -3,14 +3,20 @@
 
 <div class="nav navbar-nav navbar-right"><input class="searchBoxes"  type="text" ng-model="search.summary" placeholder="Search Summaries..."/></div>
 
-<div ng-repeat="t in vm.topics | filter:search">
+<div ng-repeat="t in vm.topics | orderBy:'-created'| filter:search ">
 
 
 	<div id="userTopics" class="well">
-		<h2>{{t.hashtopic}}</h2>
-		<p>{{t.summary}}</p>
+		<a id="posts" ui-sref="TopicDetail({id:t._id})">
+			<h2>#{{t.hashtopic}}</h2>
+			<p>{{t.summary}}</p>
+			<i>{{t.likedBy.length}}</i>
+		</a>
+		<!--Just used for organizing latest post on top<i>{{t.created}}</i> -->
+		<a ng-click="nav.likeClick(nav.status.username, t._id); vm.likeClick()"><span class="glyphicon glyphicon-heart"></span></a>
+		<p><a ui-sref="TopicDetail({id:t._id})">See More</a></p>
 
-		<a ui-sref="TopicDetail({id: topic._id})">See More</a>
+		<p class="nav navbar-right" ng-click="vm.deleteTopic(t)"><span class="glyphicon glyphicon-trash"></span></p>
 
 	</div>
 

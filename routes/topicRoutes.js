@@ -9,7 +9,9 @@ var auth = jwt({
 	userProperty: "payload"
 })
 //REQUIRED FOR GETTING ONE TOPIC & POPULATING COMMENTS-------------------------------------------------------
+
 router.param('id', function(req, res, next, id) {
+	req._id = id;
 	topic.findOne({_id:id})
 	.populate({ path: "comments"})
 	.exec(function(err, comments) {
@@ -30,7 +32,8 @@ router.param('id', function(req, res, next, id) {
 //----------------------------------------------------------------------------------
 
 router.post('/', function(req, res) {
-	var newTopic = new topic(req.body); //cannot be same "topic" as line 4
+	var newTopic = new topic(req.body);
+	newTopic.created = new Date();
 	newTopic.save(function(err, result) {
 		if(err) return res.status(500).send({err: "The server is having issues."});
 		if(!result) return res.status(400).send({err: "Sorry! Could not create that topic."});
@@ -42,17 +45,35 @@ router.get('/', function(req, res) {
 	topic.find({}) //"topic" is my whole object
 	.exec(function(err, topics) {
 		if(err) return res.status(500).send({err: "error getting all topics"});
-		if(!topics) return res.status(500).send({err: "topics do not exist"});
+		if(!topics) return res.status(400).send({err: "topics do not exist"});
 		res.send(topics);
-
 	});
 });
 
 router.get('/:id', function(req, res) {
-	console.log(req.topic);
 	res.send(req.topic);
 });
 
+router.delete('/:id', function(req, res) {
+	topic.remove({_id:req._id})
+	.exec(function(err, topics){
+		if(err) return res.status(500).send({err: "error getting topic to delete"});
+		if(!topics) return res.status(400).send({err: "topics aren't existing"});
+		res.send(topics);
+	});
+});
 
+//-------------------POSTING FOR LIKES---------------------------------------------------
+router.post("/likes", function(req, res) {
+	topic.update({_id: req.body._id}, {$push: {
+		likedBy: {username: req.body.user}
+	}}, function(err, result){
+		if(err) return res.status(500).send({err: "error getting topic to delete"});
+		if(!result) return res.status(400).send({err: "topics aren't existing"});
+		res.send();
+	});
+});
+
+//------------------------------------------------------------------------------------
 
 module.exports = router;
