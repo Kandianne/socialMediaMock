@@ -4,19 +4,27 @@
 	angular.module('app')
 	.controller('createTopicController', createTopicController);
 
-	createTopicController.$inject = ['HomeFactory', '$state'];
+	createTopicController.$inject = ['HomeFactory', 'UserFactory', '$state', '$stateParams'];
 
-	function createTopicController(HomeFactory, $state) {
+	function createTopicController(HomeFactory, UserFactory, $state, $stateParams) {
 		var vm = this;
 		vm.title = '#hashItOut';
 		vm.topic = {};
 
+		console.log($stateParams.id);
 		vm.createTopic = function(){
-			HomeFactory.createTopic(vm.topic).then(function(){
+			if (!$stateParams.id) $state.go('CreateTopic');
+			else HomeFactory.createTopic(vm.topic, $stateParams.id).then(function(res){
 				$state.go("Home");
+				vm.user = res;
 			});
+
 		};
 
-		
+
 	}
 })();
+
+
+
+

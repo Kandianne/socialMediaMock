@@ -10,15 +10,15 @@
 <body>
 	<div id="navigation" class="well" ng-controller="navBarController as nav">
 		
-		
-		<div class="nav navbar-nav navbar-left">
+		<div class="nav navbar-nav navbar-left navGlyphs">
 			<a ui-sref="Home"><span class="glyphicon glyphicon-home"></span></a>
-			<a ui-sref="CreateTopic"><span class="glyphicon glyphicon-pencil"></span> Create Topic</a>
+			<a ui-sref="CreateTopic"><span class="glyphicon glyphicon-comment"></span></a>
+			<a ui-sref="Users"><span class="glyphicon glyphicon-user"></span></a>
 		</div>
 
 		<div class="nav navbar-nav navbar-right" ng-show="nav.status.id">
 			<a ng-click="nav.logout()">Logout</a>
-			<a ui-sref="UserProfile({id: topic._id})">{{nav.status.username}}</a>
+			<a id="loggedInUsername" ui-sref="UserProfile({id:_user.id})">{{nav.status.username}}</a>
 		</div>
 
 		<div class="nav navbar-nav navbar-right" ng-show="!nav.status.id">
@@ -46,6 +46,6 @@
 	<script src="/javascript/controllers/navBarController.js"></script>
 	<script src="/javascript/controllers/createTopicController.js"></script>
 	<script src="/javascript/controllers/TopicDetailsController.js"></script>
-	<script src="/javascript/controllers/UserProfileController.js"></script>
+	<script src="/javascript/controllers/UsersController.js"></script>
 </body>
 </html>

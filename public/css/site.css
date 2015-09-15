@@ -4,7 +4,6 @@ body, #userTopics, .well {
 	color: #319C38;
 }
 
-
 a {
 	color: #777;
 	margin: auto 3px;
@@ -19,6 +18,7 @@ a:hover {
 	font-weight: bold;
 	text-decoration: none;
 }
+/*------NAVIGATION BAR-----------------------------*/
 
 #navigation {
 	padding: auto;
@@ -27,6 +27,15 @@ a:hover {
 	border-bottom: thin solid #319C38;
 	height: 60px;
 }
+
+.navGlyphs, .topicGlyphs {
+	font-size: 1.3em;
+}
+
+.topicGlyphs {
+	margin: -3em .3em 0em .3em;
+}
+
 #mainTitle {
 	margin-top: -17px;
 	text-align: center;
@@ -35,23 +44,38 @@ a:hover {
 	font-weight: bold;
 }
 
-#createTopic {
-	margin: 6px auto;
-	text-align: center;
-	width: 600px;
+#loggedInUsername {
+	padding: auto .3em;
+	color: blue;
+
 }
+
+/*------NAVIGATION BAR END-----------------------------*/
+
 
 #userTopics {
 	width: 600px;
-	margin: 30px auto;
+	margin:auto;
 	border: thick solid #e3efc9;
 }
 #posts {
 	color: #319C38;
 }
 
-.searchBoxes {
+#mainActions {
 	height: 90px;
-	margin: 90px;
+	margin-top: 5%;
 	text-align: center;
+
 }
+
+/*------FRIENDS-----------------------------*/
+
+#friends h4, h6 {
+	text-shadow: none;
+}
+
+#friends {
+	margin: 3em .5em;
+}
+

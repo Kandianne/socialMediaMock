@@ -12,6 +12,9 @@
 		HomeFactory.getTopics().then(function(res) {
 			vm.topics = res;
 
+			vm.editTopic = function(topicToEdit) {
+				HomeFactory.editTopic(topicToEdit);
+			};
 
 			vm.deleteTopic = function(topic) {
 				vm.topics.splice(vm.topics.indexOf(topic), 1);
@@ -22,21 +25,7 @@
 				HomeFactory.getTopics().then(function(res) {
 					vm.topics = res;
 				})
-			};
-
-			
-			// var hasLiked = false;
-			// vm.likeClick = function() {
-			// 	if (!hasLiked) {
-			// 		hasLiked = true;
-			// 		vm.liked = "Unlike";
-			// 		vm.likeCount += 1;
-			// 	}else {
-			// 		hasLiked = false;
-			// 		vm.liked = "Like";
-			// 		vm.likeCount -= 1;
-			// 	}
-			// };
+			};	
 
 		});
 	};

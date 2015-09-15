@@ -5,6 +5,7 @@ var topicSchema = new mongoose.Schema({
 	summary: String,
 	created: Date,
 	// dateDeleted: Null,
+	createdBy: {type: mongoose.Schema.Types.ObjectId, ref: "User"},
 	likedBy: Array,
 	comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "TopicComment"}]
 });

@@ -9,8 +9,13 @@
 			templateUrl: 'views/home.html',
 			controller: "HomeController",
 			controllerAs: "vm"
+		}).state('Users',{
+			url: '/Users',
+			templateUrl: 'views/users.html',
+			controller: "UsersController",
+			controllerAs: "vm"
 		}).state("CreateTopic", {
-			url: "/create",
+			url: "/create/:id",
 			templateUrl: "views/create-topic.html",
 			controller: "createTopicController",
 			controllerAs: "vm"
@@ -27,8 +32,8 @@
 			controllerAs: 'vm'
 		}).state('UserProfile', {
 			url: '/User/:id',
-			templateUrl: 'views/UserProfile.html',
-			controller: 'UserProfileController',
+			templateUrl: 'views/userProfile.html',
+			controller: 'UsersController',
 			controllerAs: 'vm'
 		});
 		$urlRouterProvider.otherwise('/');

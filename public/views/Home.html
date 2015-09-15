@@ -1,7 +1,17 @@
 
-<div class="nav navbar-nav navbar-left"><input class="searchBoxes" type="text" ng-model="search.hashtopic" placeholder="Search Topics..."/></div>
+<div id="mainActions" class="row">
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nopadding">
 
-<div class="nav navbar-nav navbar-right"><input class="searchBoxes"  type="text" ng-model="search.summary" placeholder="Search Summaries..."/></div>
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 nopadding"><a ui-sref="CreateTopic({id:_user.id})"><input class="searchBoxes" type="text" placeholder="Create Topic..."/></a></div>
+
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 nopadding"><input class="searchBoxes" type="text" ng-model="search.hashtopic" placeholder="Search Topics..."/></div>
+
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 nopadding"><input class="searchBoxes"  type="text" ng-model="search.summary" placeholder="Search Summaries..."/></div>
+
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 nopadding"><a ui-sref="Users"><input class="searchBoxes" type="text" placeholder="Find Friends..."/></a></div>
+
+	</div>
+</div>
 
 <div ng-repeat="t in vm.topics | orderBy:'-created'| filter:search ">
 
@@ -11,12 +21,18 @@
 			<h2>#{{t.hashtopic}}</h2>
 			<p>{{t.summary}}</p>
 			<i>{{t.likedBy.length}}</i>
+			<i>{{t.createdBy.username}}</i>
 		</a>
+
 		<!--Just used for organizing latest post on top<i>{{t.created}}</i> -->
 		<a ng-click="nav.likeClick(nav.status.username, t._id); vm.likeClick()"><span class="glyphicon glyphicon-heart"></span></a>
-		<p><a ui-sref="TopicDetail({id:t._id})">See More</a></p>
+		<p>
 
-		<p class="nav navbar-right" ng-click="vm.deleteTopic(t)"><span class="glyphicon glyphicon-trash"></span></p>
+		<a ui-sref="TopicDetail({id:t._id})">See More</a></p>
+
+		<p title="Delete Comment" class="nav navbar-right" ng-click="vm.deleteTopic(t)"><span class="glyphicon glyphicon-trash topicGlyphs"></span></p>
+		<p title="Edit Comment" class="nav navbar-right" ng-click="vm.editTopic(t)"><span class="glyphicon glyphicon-edit topicGlyphs"></span></p>
+
 
 	</div>
 

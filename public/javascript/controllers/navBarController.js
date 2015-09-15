@@ -14,6 +14,7 @@
 		vm.register = function() {
 			UserFactory.register(vm.user).then(function(){
 				vm.user = {};
+				vm.user.body = "";
 				$state.go("Home");
 			});
 		};

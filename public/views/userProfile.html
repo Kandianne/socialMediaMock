@@ -1,2 +1,11 @@
-<p>Username: {{nav.status.username}}</p>
-<p>Image: {{nav.status.image}}</p>
+
+<div class="well text-center">
+	
+	<p id="userImage"><img class="img img-circle" src="{{vm.user.image}}" height='90px' width='90px'></p>
+	<h3>Name: {{vm.user.name}}</h3>
+	<p>Username: {{vm.user.username}}</p>
+	<p>Email: {{vm.user.email}}</p>
+	<br/>
+	<br/>
+	<a ui-sref="Home" class="btn btn-sm">Go Back Home</a>
+</div>

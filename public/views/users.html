@@ -1,0 +1,17 @@
+<div class="row text-center">
+	<h1>Find friends and add them</h1>
+	
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<input class="searchFriends" type="text" ng-model="searchFriends.name" placeholder="Find Friends..."/>
+	</div>
+
+	<div  id="friends" class="well col-lg-2 col-md-2 col-sm-2 col-xs-2" ng-repeat="u in vm.users | orderBy:'-name' | filter: searchFriends">
+
+		<div>
+			<h4 id="userImage"><img class="img img-circle" src="{{u.image}}" height='60px' width='60px'><br/>{{u.name}}</h4>
+			<h6>Username: {{u.username}}</h6>
+			<h6>{{u.email}}</h6>
+		</div>
+
+	</div>
+</div>

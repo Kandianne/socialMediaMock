@@ -6,6 +6,7 @@
 	function UserFactory($q, $http, $window, $rootScope) {
 		var o = {};
 
+		//---------------------TOKENS----------------------------------------------------
 
 		function setToken(token) {
 			localStorage.setItem("token", token);
@@ -30,6 +31,7 @@
 				return false;
 			}
 		}
+		//---------------------LOGIN, REGISTER, LOGOUT----------------------------------------------------
 
 		o.register = function(user) {
 			var q = $q.defer();
@@ -43,6 +45,7 @@
 
 		o.login = function(user) {
 			var q = $q.defer();
+			user.username = user.username.toLowerCase();
 			$http.post('/api/users/login', user).success(function(res) {
 				setToken(res.token);
 				$rootScope._user = isLoggedIn();
@@ -66,6 +69,24 @@
 				throw 'Illegal base64url string'
 			}
 			return decodeURIComponent(escape($window.atob(output)));
+		}
+
+		//---------------------GETTING USERS AND USER----------------------------------------------------
+
+		o.getUser = function(id) {
+			var q = $q.defer();
+			$http.get("/api/users/" + id).success(function(res){
+				q.resolve(res);
+			})
+			return q.promise;
+		}
+
+		o.getUsers = function() {
+			var q = $q.defer();
+			$http.get("/api/users").success(function(res){
+				q.resolve(res);
+			})
+			return q.promise;
 		}
 
 		$rootScope._user = isLoggedIn();
