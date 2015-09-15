@@ -86,6 +86,7 @@ router.put('/:id', function(req, res) {
 	var topicObject = req.body;
 	topic.update({_id:req._id}, topicObject)
 	.exec(function(err, topics){
+		console.log(topics)
 		if(err) return res.status(500).send({err: "error getting topic to edit"});
 		if(!topics) return res.status(400).send({err: "Topic to edit aren't existing"});
 		res.send(topics);

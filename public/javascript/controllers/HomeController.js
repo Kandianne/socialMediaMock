@@ -12,10 +12,6 @@
 		HomeFactory.getTopics().then(function(res) {
 			vm.topics = res;
 
-			vm.editTopic = function(topicToEdit) {
-				HomeFactory.editTopic(topicToEdit);
-			};
-
 			vm.deleteTopic = function(topic) {
 				vm.topics.splice(vm.topics.indexOf(topic), 1);
 				HomeFactory.deleteTopic(topic);

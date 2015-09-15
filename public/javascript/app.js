@@ -19,6 +19,11 @@
 			templateUrl: "views/create-topic.html",
 			controller: "createTopicController",
 			controllerAs: "vm"
+		}).state("EditTopic", {
+			url: "/edit/:id",
+			templateUrl: "views/edit-topic.html",
+			controller: "EditController",
+			controllerAs: "vm"
 		}).state('RegisterUser', {
 			url: '/Register',
 			templateUrl: 'views/register_user.html'

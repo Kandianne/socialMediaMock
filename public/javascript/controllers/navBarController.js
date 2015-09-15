@@ -21,7 +21,6 @@
 
 		vm.login = function() {
 			UserFactory.login(vm.user).then(function(){
-				console.log("login function isn't working")
 				vm.status = $rootScope._user;
 				$state.go("Home");
 			});
