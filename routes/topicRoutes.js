@@ -56,7 +56,7 @@ router.post('/:topicWithUser', function(req, res) {
 	req.body.createdBy = req._id;
 	var newTopic = new topic(req.body);
 	newTopic.created = new Date();
-	console.log(newTopic);
+	console.log(newTopic + "topicRoutes59");
 	newTopic.save(function(err, result) {
 		if(err) return res.status(500).send({err: "The server is having issues."});
 		if(!result) return res.status(400).send({err: "Sorry! Could not create that topic."});
